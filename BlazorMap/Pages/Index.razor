@@ -1,0 +1,26 @@
+﻿@page "/"
+@inject IJSRuntime JSRuntime
+
+<div>
+    <div id="map" style="height:700px; width:100%; margin-top:0px;">
+
+    </div>
+    <div style="margin-top:10px;">
+        <input id="pac-input"
+               class="controls"
+               type="text"
+               placeholder="Search Box" />
+    </div>
+    <button type="submit" class="btn btn-success"></button>
+</div>
+
+
+@code{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("initialize", null);
+        }
+    }
+}
